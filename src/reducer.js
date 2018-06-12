@@ -1,15 +1,25 @@
 import initial from './initial.js'
 
-let increasePlayerScore = (state, { type }) => {
+//winning score
+const aim = 21;
+
+// increases the scores by 1 respectively
+let increasePlayerScore = (state, { who }) => {
+  return {
+    ...state,
+    [who]: state[who] + 1,
+  };
+};
+
+// deciding who is serving
+let server = state => {
   const stateCopy = {...state};
+  const p1 = state.player1
+  const p2 = state.player2
 
-  // increases the scores by 1 respectively
-  stateCopy[type] += 1;
+  let counter = p1 + p2
 
-  // deciding who is serving
-  let counter = stateCopy.player1 + stateCopy.player2
-
-  if (stateCopy.player1 >= 21 && stateCopy.player2 >= 21) {
+  if (p1 >= aim && p2 >= aim) {
     if (Math.floor(counter / 2) % 2 === 0) {
       stateCopy.serving = true
     } else {
@@ -22,21 +32,23 @@ let increasePlayerScore = (state, { type }) => {
       stateCopy.serving = false
     }
   }
-
-  // deciding who wins
-  if (stateCopy.player1 >= 21 && stateCopy.player1 - stateCopy.player2 >=2) {
-    stateCopy.winner = "Player 1 wins!"
-  } else if (stateCopy.player2 >= 21 && stateCopy.player2 - stateCopy.player1 >=2) {
-    stateCopy.winner = "Player 2 wins!"
-  }
-
   return stateCopy;
+}
+
+// deciding who wins
+let winner = state => {
+  const p1 = state.player1
+  const p2 = state.player2
+
+  return {
+    ...state,
+    winner: p1 >= aim && p1 - p2 >=2 ? 1 : p2 >= aim && p2 - p1 >=2 ? 2 : 0
+  }
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "player1": return increasePlayerScore(state, action);
-    case "player2": return increasePlayerScore(state, action);
+    case "score": return winner(server(increasePlayerScore(state, action)));
     case "reset": return initial;
     default: return state;
   }
