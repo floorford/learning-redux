@@ -7,6 +7,7 @@ const store = createStore(
   initial,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),);
 
+// getting all the elements
 let output1 = document.getElementById("player1");
 let output2 = document.getElementById("player2");
 let score1 = document.getElementById("score1");

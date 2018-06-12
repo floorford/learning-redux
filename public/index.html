@@ -25,6 +25,9 @@
       background-color: paleturquoise;
       padding: 2px;
     }
+    .winner {
+      color: hotpink;
+    }
     </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -37,11 +40,11 @@
     -->
     <title>Learning Redux: Ping Pong Score App</title>
   </head>
-  <body>
-    <header class="jumbotron">
+  <body style="text-align: center; background-color: #fffcf8">
+    <header class="jumbotron" style="background-image: url('./subtlenet2.png'); background-color: #f44336;     background-blend-mode: luminosity;">
       <h1>Learning Redux: Ping Pong Score App</h1>
     </header>
-    <main class="container" style="text-align: center">
+    <main class="container">
       <noscript>
         You need to enable JavaScript to run this app.
       </noscript>
@@ -49,10 +52,10 @@
       <p id="player1"></p>
       <p>Player 2</p>
       <p id="player2"></p>
-      <h4 id="winner"></h4>
+      <h4 class="winner" id="winner"></h4>
       <div>
-        <button class="btn btn-info" id="score1">Player 1 Scores!</button>
-        <button class="btn btn-info" id="score2">Player 2 Scores!</button>
+        <button class="btn btn-primary" id="score1">Player 1 Scores!</button>
+        <button class="btn btn-primary" id="score2">Player 2 Scores!</button>
         </br>
         </br>
         <button class="btn btn-warning" id="reset">Reset</button>

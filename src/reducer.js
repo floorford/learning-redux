@@ -19,6 +19,7 @@ let server = state => {
 
   let counter = p1 + p2
 
+  // every 2 if score > 21, every 5 otherwise
   if (p1 >= aim && p2 >= aim) {
     if (Math.floor(counter / 2) % 2 === 0) {
       stateCopy.serving = true
@@ -40,12 +41,14 @@ let winner = state => {
   const p1 = state.player1
   const p2 = state.player2
 
+  // whomevers score >= 21, and 2 points clear of opponent
   return {
     ...state,
-    winner: p1 >= aim && p1 - p2 >=2 ? 1 : p2 >= aim && p2 - p1 >=2 ? 2 : null
+    winner: p1 >= aim && p1 - p2 >1 ? 1 : p2 >= aim && p2 - p1 >1 ? 2 : null
   }
 }
 
+// the reducer
 const reducer = (state, action) => {
   switch (action.type) {
     case "score": return winner(server(increasePlayerScore(state, action)));
