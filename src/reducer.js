@@ -2,6 +2,8 @@ import initial from './initial.js'
 
 //winning score
 const aim = 21;
+const alt = 5;
+const tieBreak = 2;
 
 // increases the scores by 1 respectively
 let increasePlayerScore = (state, { who }) => {
@@ -21,13 +23,13 @@ let server = state => {
 
   // every 2 if score > 21, every 5 otherwise
   if (p1 >= aim && p2 >= aim) {
-    if (Math.floor(counter / 2) % 2 === 0) {
+    if (Math.floor(counter / tieBreak) % 2 === 0) {
       stateCopy.serving = true
     } else {
       stateCopy.serving = false
     }
   } else {
-    if (Math.floor(counter / 5) % 2 === 0) {
+    if (Math.floor(counter / alt) % 2 === 0) {
       stateCopy.serving = true
     } else {
       stateCopy.serving = false
