@@ -44,7 +44,7 @@ let winner = state => {
   // whomevers score >= 21, and 2 points clear of opponent
   return {
     ...state,
-    winner: p1 >= aim && p1 - p2 >1 ? 1 : p2 >= aim && p2 - p1 >1 ? 2 : null
+    winner: p1 >= aim && p1 - p2 >1 ? 1 : p2 >= aim && p2 - p1 >1 ? 2 : 0
   }
 }
 
