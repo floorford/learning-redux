@@ -43,10 +43,14 @@ let render = () => {
   }
 
   // setting the text content for the winner
-  if (state.winner === 1) {
-    winner.textContent = "Player 1 wins!"
-  } else if (state.winner === 2) {
-    winner.textContent = "Player 2 wins!"
+  if (state.winner > 0) {
+    winner.textContent = `Player ${state.winner} wins!`
+    score1.style.display = "none"
+    score2.style.display = "none"
+  } else {
+    winner.textContent = null
+    score1.style.display = "inline-block"
+    score2.style.display = "inline-block"
   }
 }
 

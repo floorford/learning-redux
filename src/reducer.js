@@ -42,7 +42,7 @@ let winner = state => {
 
   return {
     ...state,
-    winner: p1 >= aim && p1 - p2 >=2 ? 1 : p2 >= aim && p2 - p1 >=2 ? 2 : 0
+    winner: p1 >= aim && p1 - p2 >=2 ? 1 : p2 >= aim && p2 - p1 >=2 ? 2 : null
   }
 }
 
